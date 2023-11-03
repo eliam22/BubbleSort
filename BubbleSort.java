@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 public class BubbleSort {
 
-    @GetMapping("/")
+    @GetMapping("/message")
     public String bubbleSort() {
         int[] arr = {64, 34, 25, 12, 22, 11, 90};
         int n = arr.length;
