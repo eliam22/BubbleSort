@@ -1,37 +1,40 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-package Burbuja;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-/**
- *
- * @author eliamyaet
- */
+@RestController
+@SpringBootApplication
 public class BubbleSort {
-    public static void main(String[] args) {
+
+    @GetMapping("/")
+    public String bubbleSort() {
         int[] arr = {64, 34, 25, 12, 22, 11, 90};
         int n = arr.length;
-        
-        // Itera a través de todos los elementos del array
+
+        // Tu algoritmo de ordenamiento Bubble Sort
         for (int i = 0; i < n - 1; i++) {
-            // Últimos i elementos ya están en su posición ordenada
             for (int j = 0; j < n - i - 1; j++) {
-                // Compara el elemento actual con el siguiente elemento
                 if (arr[j] > arr[j + 1]) {
-                    // Realiza el intercambio si el elemento actual es mayor que el siguiente
                     int temp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
                 }
             }
         }
-        
-        // Imprime el array ordenado
-        System.out.println("Array ordenado:");
+
+        // Construir una cadena con los valores ordenados para devolverla como respuesta
+        StringBuilder sortedArray = new StringBuilder();
+        sortedArray.append("Array ordenado: ");
         for (int value : arr) {
-            System.out.print(value + " ");
+            sortedArray.append(value).append(" ");
         }
+        return sortedArray.toString();
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(BubbleSort.class, args);
     }
 }
+
 
